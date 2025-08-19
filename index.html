@@ -3,126 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bimantoro - Personal Website</title>
-  <meta name="description" content="Welcome to my Personal Website"/>
-  <link rel="shortcut icon" href="/icon.ico"/>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/>
-  <link rel="apple-touch-icon" href="/icon.png"/>
-
-  <!-- Panggil file CSS -->
+  <title>Bima Toro - Personal Website</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Layer background */
-    .bg-layer {
-      position: fixed;
-      inset: 0;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      transition: opacity 0.6s ease-in-out;
-      z-index: -1;
-    }
-    .bg-hidden { opacity: 0; }
-    .bg-visible { opacity: 1; }
-  </style>
 </head>
 <body>
-  <!-- Dua layer background -->
-  <div id="bgA" class="bg-layer bg-visible"></div>
-  <div id="bgB" class="bg-layer bg-hidden"></div>
-
-  <!-- Musik autoplay -->
-  <audio id="musik" autoplay loop>
-    <source src="https://damp-plum-v6ampegggp.edgeone.app/ognogo.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio.
-  </audio>
-
-  <!-- Efek suara whoosh untuk fade-out -->
-  <audio id="whoosh">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_13b15d77b7.mp3" type="audio/mpeg">
-  </audio>
-
   <header>
-    <h1>Profil Diri</h1>
+    <h1>Selamat Datang di Website BimanToro</h1>
   </header>
 
-  <div class="container">
-    <img class="foto-profil" src="https://i.ibb.co.com/3yzT2yCC/Bimantoro.jpg" alt="Foto Profil" />
-    <h2>BIMANTORO</h2>
-    <p>Halo! Saya adalah siswa kelas 8 di Mts Jawa Jengah. Ini adalah website sederhana pertama saya 😎</p>
-    
-    <h3>Hobi Saya:</h3>
+  <!-- Kontrol Musik -->
+  <section>
+    <audio id="musik" loop>
+      <source src="musik.mp3" type="audio/mp3">
+    </audio>
+    <button id="musikBtn">▶️ Play Musik</button>
+  </section>
+
+  <!-- Tombol Gaskeun -->
+  <section>
+    <button id="klikBtn">🚀 Gaskeun 😎</button>
+    <div id="overlay"></div>
+    <audio id="whoosh" src="whoosh.mp3"></audio>
+  </section>
+
+  <!-- Hobi -->
+  <section>
+    <h2>Hobi Saya</h2>
     <ul>
-      <li>Main game</li>
-      <li>Nonton anime</li>
-      <li>Hacking</li>
+      <li>Ngoding</li>
+      <li>Gaming</li>
+      <li>Desain</li>
     </ul>
+  </section>
 
-    <h3>Terima kasih sudah mampir!</h3>
-    <p>
-      <a href="https://wa.me/6288226917073" target="_blank">
-        Chat WhatsApp Saya
-      </a>
-    </p>
+  <!-- Kontrol Wallpaper -->
+  <section class="wallpaper-controls">
+    <button id="shuffleBtn">🎲 Ganti Wallpaper</button>
+    <button id="autoShuffleBtn">🔁 Auto Shuffle</button>
+    <select id="modeSelect">
+      <option value="cover">Cover</option>
+      <option value="contain">Contain</option>
+    </select>
+  </section>
 
-    <button id="klikBtn">Gaskeun 😎</button>
-    <br><br>
-    <!-- Tombol kontrol musik -->
-    <button id="musikBtn">⏯️ Play / Pause Musik</button>
-  </div>
-
-  <p>
-    <a href="readme.html" target="_blank">📖 Lihat README Website</a>
-  </p>
-
-  <!-- Overlay buat fade-out -->
-  <div id="overlay"></div>
-
-  <!-- Script utama -->
   <script src="script.js"></script>
-
-  <!-- Script tambahan untuk wallpaper acak -->
-  <script>
-    const wallpapers = [
-      'https://i.ibb.co.com/JR22SDVD/Elaina-Edit-1.jpg',
-      'https://i.ibb.co.com/prRCvsWq/Elaina-Edit-2.jpg'
-    ];
-
-    const bgA = document.getElementById('bgA');
-    const bgB = document.getElementById('bgB');
-    let activeA = true;
-    let lastUrl = null;
-
-    function pickRandom() {
-      if (wallpapers.length === 1) return wallpapers[0];
-      let url;
-      do { url = wallpapers[Math.floor(Math.random() * wallpapers.length)]; }
-      while (url === lastUrl);
-      lastUrl = url;
-      return url;
-    }
-
-    function setBackground(url) {
-      const visible = activeA ? bgA : bgB;
-      const hidden = activeA ? bgB : bgA;
-      hidden.style.backgroundImage = `url('${url}')`;
-      hidden.classList.remove('bg-hidden');
-      hidden.classList.add('bg-visible');
-      visible.classList.remove('bg-visible');
-      visible.classList.add('bg-hidden');
-      activeA = !activeA;
-    }
-
-    // Pilih wallpaper acak pertama saat load
-    window.addEventListener('DOMContentLoaded', () => {
-      const first = pickRandom();
-      bgA.style.backgroundImage = `url('${first}')`;
-      // opsional: ganti otomatis tiap 15 detik
-      setInterval(() => {
-        const next = pickRandom();
-        setBackground(next);
-      }, 15000);
-    });
-  </script>
 </body>
 </html>
