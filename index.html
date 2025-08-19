@@ -3,49 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bima Toro - Personal Website</title>
+  <title>Bimantoro - Personal Website</title>
+  <meta name="description" content="Welcome to my Personal Website"/>
+  <link rel="shortcut icon" href="/icon.ico"/>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/>
+  <link rel="apple-touch-icon" href="/icon.png"/>
+
+  <!-- Panggil file CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Musik autoplay -->
+  <audio id="musik" autoplay loop>
+    <source src="https://damp-plum-v6ampegggp.edgeone.app/ognogo.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <!-- Efek suara whoosh untuk fade-out -->
+  <audio id="whoosh">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_13b15d77b7.mp3" type="audio/mpeg">
+  </audio>
+
   <header>
-    <h1>Selamat Datang di Website BimanToro</h1>
+    <h1>Profil Diri</h1>
   </header>
 
-  <!-- Kontrol Musik -->
-  <section>
-    <audio id="musik" loop>
-      <source src="musik.mp3" type="audio/mp3">
-    </audio>
-    <button id="musikBtn">▶️ Play Musik</button>
-  </section>
-
-  <!-- Tombol Gaskeun -->
-  <section>
-    <button id="klikBtn">🚀 Gaskeun 😎</button>
-    <div id="overlay"></div>
-    <audio id="whoosh" src="whoosh.mp3"></audio>
-  </section>
-
-  <!-- Hobi -->
-  <section>
-    <h2>Hobi Saya</h2>
+  <div class="container">
+    <img class="foto-profil" src="https://i.ibb.co.com/3yzT2yCC/Bimantoro.jpg" alt="Foto Profil" />
+    <h2>BIMANTORO</h2>
+    <p>Halo! Saya adalah siswa kelas 8 di Mts Jawa Jengah. Ini adalah website sederhana pertama saya 😎</p>
+    
+	</section>
+    <h3>Hobi Saya:</h3>
     <ul>
-      <li>Ngoding</li>
-      <li>Gaming</li>
-      <li>Desain</li>
+      <li>Main game</li>
+      <li>Nonton anime</li>
+      <li>Hacking</li>
     </ul>
-  </section>
+	</section>
 
-  <!-- Kontrol Wallpaper -->
-  <section class="wallpaper-controls">
-    <button id="shuffleBtn">🎲 Ganti Wallpaper</button>
-    <button id="autoShuffleBtn">🔁 Auto Shuffle</button>
-    <select id="modeSelect">
-      <option value="cover">Cover</option>
-      <option value="contain">Contain</option>
-    </select>
-  </section>
+    <h3>Terima kasih sudah mampir!</h3>
+    <p>
+      <a href="https://wa.me/6288226917073" target="_blank">
+        Chat WhatsApp Saya
+      </a>
+    </p>
 
+    <button id="klikBtn">Gaskeun 😎</button>
+    <br><br>
+    <!-- Tombol kontrol musik -->
+    <button id="musikBtn">⏯️ Play / Pause Musik</button>
+  </div>
+
+<p>
+  <a href="readme.html" target="_blank">📖 Lihat README Website</a>
+</p>
+
+  <!-- Overlay buat fade-out -->
+  <div id="overlay"></div>
+
+  <!-- Panggil file script.js -->
   <script src="script.js"></script>
 </body>
 </html>
