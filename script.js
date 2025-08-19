@@ -1,3 +1,37 @@
+// --- Wallpaper Random ---
+const wallpapers = [
+  "https://i.ibb.co.com/JR22SDVD/Elaina-Edit-1.jpg",
+  "https://i.ibb.co.com/prRCvsWq/Elaina-Edit-2.jpg"
+];
+
+let autoShuffle = false;
+let intervalId = null;
+
+function setRandomWallpaper() {
+  const random = Math.floor(Math.random() * wallpapers.length);
+  document.body.style.backgroundImage = `url('${wallpapers[random]}')`;
+}
+
+document.getElementById("shuffleBtn").addEventListener("click", setRandomWallpaper);
+
+document.getElementById("autoShuffleBtn").addEventListener("click", () => {
+  autoShuffle = !autoShuffle;
+  const btn = document.getElementById("autoShuffleBtn");
+  if (autoShuffle) {
+    btn.textContent = "⏹️ Stop Shuffle";
+    intervalId = setInterval(setRandomWallpaper, 10000);
+  } else {
+    btn.textContent = "🔁 Auto Shuffle";
+    clearInterval(intervalId);
+  }
+});
+
+document.getElementById("modeSelect").addEventListener("change", (e) => {
+  document.body.style.backgroundSize = e.target.value;
+});
+
+setRandomWallpaper();
+
 // --- Kontrol Musik ---
 const musik = document.getElementById("musik");
 const musikBtn = document.getElementById("musikBtn");
@@ -14,11 +48,9 @@ musikBtn.addEventListener("click", () => {
 
 // --- Tombol Gaskeun 😎 ---
 document.getElementById("klikBtn").addEventListener("click", function() {
-  // Ganti background ke warna random
   document.body.style.backgroundColor =
     "#" + Math.floor(Math.random() * 16777215).toString(16);
 
-  // Tambahin teks "Gaskeun! 🚀"
   const p = document.createElement("p");
   p.innerText = "Gaskeun! 🚀";
   p.style.color = "white";
@@ -26,15 +58,14 @@ document.getElementById("klikBtn").addEventListener("click", function() {
   p.style.textAlign = "center";
   document.body.appendChild(p);
 
-  // Aktifkan fade-out overlay + mainkan suara whoosh
   const overlay = document.getElementById("overlay");
   const whoosh = document.getElementById("whoosh");
   overlay.classList.add("active");
   whoosh.play();
 
-  // Tunggu 1.5 detik (overlay penuh), lalu pindah ke YouTube
   setTimeout(function() {
-    window.location.href = "https://youtube.com/playlist?list=PLPanbgyToztYKvNJ42N1cw4_jhsABKUBH&si=fus4WT9kIsVY9xMD";
+    window.location.href =
+      "https://youtube.com/playlist?list=PLPanbgyToztYKvNJ42N1cw4_jhsABKUBH&si=fus4WT9kIsVY9xMD";
   }, 1500);
 });
 
@@ -43,12 +74,7 @@ window.addEventListener("load", () => {
   const hobiItems = document.querySelectorAll("ul li");
   hobiItems.forEach((item, index) => {
     setTimeout(() => {
-      // animasi muncul
-      item.style.animation = "fadeInUp 0.8s ease forwards";
-      // setelah muncul, aktifkan glow + bounce
-      setTimeout(() => {
-        item.style.animation = "glow 2s infinite alternate, bounce 2s infinite";
-      }, 800);
-    }, index * 500); // delay biar muncul satu-satu
+      item.style.opacity = 1;
+    }, index * 500);
   });
 });
